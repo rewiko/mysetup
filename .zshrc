@@ -78,7 +78,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ ! $TERM =~ screen   ]]; then
 #exec tmux
 #        #exec tmuxinator new work
-   exec tmux ls | grep : | grep -v attached| cut -d: -f1 | xargs -I {} tmux kill-session -t {} ; tmuxinator start work -n session-$( date +"%m-%d-%Y--%k-%M-%S" )
+   exec tmux ls | grep : | grep -v attached| cut -d: -f1 | xargs -I {} tmux kill-session -t {} ; tmuxinator start work -n session-$( date +"%m-%d-%Y--%H-%M-%S" )
 fi
 
 export EDITOR=vim
@@ -96,3 +96,6 @@ alias tmux='tmux -2'  # for 256color
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export CHEATCOLORS=true
+alias scheat="cd ~/.cheat;git add .; git commit -am 'update cheatsheet' ;git push origin master; cd -"
