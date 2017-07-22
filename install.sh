@@ -8,6 +8,7 @@ cp .tmux.conf ~/
 cp -r .tmuxinator ~/
 cp -r terminator ~/.config
 cp .zshrc ~/
+cp .zshenv ~/
 mkdir -p ~/work
 curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
 git clone https://github.com/rewiko/myvimrc.git ~/myvimrc
