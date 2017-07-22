@@ -29,7 +29,7 @@ root: ~/work/
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
 # post: tmux -CC attach -t work
-post: tmux kill-session
+#post: tmux kill-session
 
 windows:
   - editor:

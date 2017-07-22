@@ -79,10 +79,12 @@ source $ZSH/oh-my-zsh.sh
 # remove CTRL-U kill all line and just remove from the cursor to the beginning 
 bindkey \^U backward-kill-line
 
+bindkey '^[[Z' reverse-menu-complete
+
 if [[ ! $TERM =~ screen   ]]; then
 #exec tmux
 #        #exec tmuxinator new work
-   exec tmux ls | grep : | grep -v attached| cut -d: -f1 | xargs -I {} tmux kill-session -t {} ; tmuxinator start work -n session-$( date +"%m-%d-%Y--%H-%M-%S" )
+   exec tmux ls | grep : | grep session- | grep -v attached| cut -d: -f1 | xargs -I {} tmux kill-session -t {} ; tmuxinator start work -n session-$( date +"%m-%d-%Y--%H-%M-%S" )
 fi
 
 export EDITOR=vim
