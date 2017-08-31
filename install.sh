@@ -4,8 +4,9 @@ sudo pip install cheat
 rm -rf ~/.oh-my-zsh/
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 chsh -s $(which zsh)
-cp .tmux.conf ~/
-cp .tmux.conf.local ~/
+git clone https://github.com/rewiko/.tmux.git
+cp .tmux/.tmux.conf ~/
+cp .tmux/.tmux.conf.local ~/
 cp -r .tmuxinator ~/
 cp -r terminator ~/.config
 cp .zshrc ~/
