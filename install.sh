@@ -1,4 +1,4 @@
-sudo apt-get update; sudo apt-get install -y tmux curl zsh ruby-dev git terminator vim python-pip xclip
+sudo apt-get update; sudo apt-get install -y tmux curl zsh ruby-dev git terminator vim python-pip xclip ctags ack-grep
 sudo gem install tmuxinator
 sudo pip install cheat
 rm -rf ~/.oh-my-zsh/
