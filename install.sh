@@ -16,3 +16,6 @@ curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
 git clone https://github.com/rewiko/myvimrc.git ~/myvimrc
 cd ~/myvimrc ; ./install.sh
 git clone https://rewiko@bitbucket.org/rewiko/cheatsheet.git ~/.cheat
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
