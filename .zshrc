@@ -106,3 +106,5 @@ alias tmux='tmux -2'  # for 256color
 export CHEATCOLORS=true
 alias scheat="pcheat ; cd ~/.cheat;git add .; git commit -am 'update cheatsheet' ;git push origin master; cd -"
 alias pcheat="cd ~/.cheat; git pull ; cd -"
+alias fc='cheat -l | tail -n +2 | fzf | awk -v vars="$*" '"'"'{ print "cheat " $1 " " $3, vars }'"'"' | sh'
+assh() {/usr/bin/ssh $(echo $1 | tr - .)}
