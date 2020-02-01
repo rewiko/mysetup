@@ -102,6 +102,14 @@ alias tmux='tmux -2'  # for 256color
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+function pcheat() {
+  cd ~/.cheat/personal/
+  git pull
+  cd -
+  cd ~/.cheat/community/
+  git pull
+  cd -
+}
 
 function sync_cheat() {
   pcheat
@@ -114,6 +122,5 @@ function sync_cheat() {
 
 export CHEAT_CONFIG_PATH="~/.cheat/conf.yml"
 alias scheat="sync_cheat"
-alias pcheat="cd ~/.cheat/personal/; git pull ; cd -"
 alias sc='cheat -l | tail -n +2 | fzf | awk -v vars="$*" '"'"'{ print "cheat " $1 " " $3, vars }'"'"' | sh'
 assh() {/usr/bin/ssh $(echo $1 | tr - .)}
