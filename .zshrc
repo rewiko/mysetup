@@ -103,8 +103,17 @@ alias tmux='tmux -2'  # for 256color
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export CHEATCOLORS=true
-alias scheat="pcheat ; cd ~/.cheat;git add .; git commit -am 'update cheatsheet' ;git push origin master; cd -"
-alias pcheat="cd ~/.cheat; git pull ; cd -"
+function sync_cheat() {
+  pcheat
+  cd ~/.cheat/personal/
+  git add .
+  git commit -am 'update cheatsheet'
+  git push origin master
+  cd -
+}
+
+export CHEAT_CONFIG_PATH="~/.cheat/conf.yml"
+alias scheat="sync_cheat"
+alias pcheat="cd ~/.cheat/personal/; git pull ; cd -"
 alias sc='cheat -l | tail -n +2 | fzf | awk -v vars="$*" '"'"'{ print "cheat " $1 " " $3, vars }'"'"' | sh'
 assh() {/usr/bin/ssh $(echo $1 | tr - .)}
