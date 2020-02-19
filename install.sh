@@ -4,7 +4,7 @@ sudo pip install cheat
 wget https://github.com/cheat/cheat/releases/download/3.5.1/cheat-linux-amd64.gz
 gunzip cheat-linux-amd64.gz && sudo mv ./cheat-linux-amd64 /usr/lobal/bin/cheat
 sudo chmod +x /usr/local/bin/cheat
-mv cheat-conf.yaml ~/.cheat/conf.yml
+mv cheat-conf.yaml ~/.config/cheat/conf.yml
 rm -rf ~/.oh-my-zsh/
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 chsh -s $(which zsh)

@@ -120,7 +120,14 @@ function sync_cheat() {
   cd -
 }
 
-export CHEAT_CONFIG_PATH="~/.cheat/conf.yml"
+export CHEAT_CONFIG_PATH="~/.config/cheat/conf.yml"
 alias scheat="sync_cheat"
 alias sc='cheat -l | tail -n +2 | fzf | awk -v vars="$*" '"'"'{ print "cheat " $1 " " $3, vars }'"'"' | sh'
-assh() {/usr/bin/ssh $(echo $1 | tr - .)}
+alias ec='cheat -l | tail -n +2 | fzf | awk -v vars="$*" '"'"'{ print "cheat " $1 " -e " $3, vars }'"'"' | sh'
+# assh() {/usr/bin/ssh $(echo $1 | tr - .)}
+function assh() {
+  node=$(echo "$1" | cut -d "." -f1,1 | sed -e "s/-/\./g" -e "s/ip\.//g")
+  shift;
+  ssh $node $@
+}
+
