@@ -4,7 +4,7 @@ sudo gem install tmuxinator
 
 # install cheat 
 wget https://github.com/cheat/cheat/releases/download/3.5.1/cheat-linux-amd64.gz
-gunzip cheat-linux-amd64.gz && sudo mv ./cheat-linux-amd64 /usr/local/bin/cheat
+gunzip cheat-linux-amd64.gz && sudo mv ./cheat-linux-amd64 /usr/local/bin/cheat && rm cheat-darwin-amd64
 sudo chmod +x /usr/local/bin/cheat
 mkdir -p ~/.config/cheat/
 mv cheat-conf.yaml ~/.config/cheat/conf.yml
@@ -26,10 +26,15 @@ cp .zshenv ~/
 
 mkdir -p ~/work
 
+# install fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
 # install nvim
 curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-chmod u+x nvim.appimage
 sudo cp nvim.appimage /usr/local/bin/nvim
+sudo chmod 755 /usr/local/bin/nvim
+rm nvim.appimage
 
 # install space-vim - https://github.com/liuchengxu/space-vim 
 bash <(curl -fsSL https://raw.githubusercontent.com/liuchengxu/space-vim/master/install.sh)
@@ -37,6 +42,3 @@ bash <(curl -fsSL https://raw.githubusercontent.com/liuchengxu/space-vim/master/
 # vim config
 cp .spacevim ~/.spacevim
 
-# install fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
