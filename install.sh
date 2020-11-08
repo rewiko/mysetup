@@ -28,10 +28,15 @@ cp .zshenv ~/
 
 mkdir -p ~/work
 
+# install fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
 # install nvim
 curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-chmod u+x nvim.appimage
 sudo cp nvim.appimage /usr/local/bin/nvim
+sudo chmod 755 /usr/local/bin/nvim
+rm nvim.appimage
 
 # install space-vim - https://github.com/liuchengxu/space-vim 
 bash <(curl -fsSL https://raw.githubusercontent.com/liuchengxu/space-vim/master/install.sh)
@@ -39,6 +44,3 @@ bash <(curl -fsSL https://raw.githubusercontent.com/liuchengxu/space-vim/master/
 # vim config
 cp .spacevim ~/.spacevim
 
-# install fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
