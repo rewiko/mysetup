@@ -3,15 +3,17 @@ sudo apt-get update; sudo apt-get install -y tmux curl zsh ruby-dev git terminat
 sudo gem install tmuxinator
 
 # install cheat 
-wget https://github.com/cheat/cheat/releases/download/3.5.1/cheat-linux-amd64.gz
+wget https://github.com/cheat/cheat/releases/download/4.1.1/cheat-linux-amd64.gz
 gunzip cheat-linux-amd64.gz && sudo mv ./cheat-linux-amd64 /usr/local/bin/cheat
 sudo chmod +x /usr/local/bin/cheat
 mkdir -p ~/.config/cheat/
 mv cheat-conf.yaml ~/.config/cheat/conf.yml
+mv cheat-notebook.yaml ~/.config/cheat/notebook.yml
 rm -rf ~/.oh-my-zsh/
 
-git clone https://rewiko@bitbucket.org/rewiko/cheatsheet.git ~/.cheat/personal/
-git clone https://github.com/cheat/cheatsheets.git  ~/.cheat/community/
+git clone https://rewiko@bitbucket.org/rewiko/cheatsheet.git ~/.cheat-data/personal/
+git clone https://github.com/cheat/cheatsheets.git  ~/.cheat-data/community/
+git clone git@github.com:rewiko/notebook.git ~/.cheat-data/notebook/
 
 # install ohMyZsh - tmux 
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh

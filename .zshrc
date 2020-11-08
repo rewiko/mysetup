@@ -103,24 +103,36 @@ alias tmux='tmux -2'  # for 256color
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 function pcheat() {
-  cd ~/.cheat/personal/
+  cd ~/.cheat-data/personal/
   git pull
   cd -
-  cd ~/.cheat/community/
+  cd ~/.cheat-data/community/
   git pull
   cd -
 }
 
 function sync_cheat() {
   pcheat
-  cd ~/.cheat/personal/
+  cd ~/.cheat-data/personal/
   git add .
   git commit -am 'update cheatsheet'
   git push origin master
   cd -
 }
 
-export CHEAT_CONFIG_PATH="~/.config/cheat/conf.yml"
+function sync_notebook() {
+  pcheat
+  cd ~/.cheat-data/notebook/
+  git add .
+  git commit -am 'update notebook'
+  git push origin master
+  cd -
+}
+
+# export CHEAT_CONFIG_PATH="~/.config/cheat/conf.yml"
+alias note="export CHEAT_CONFIG_PATH=~/.config/cheat/notebook.yml; cheat"
+alias ccheat="export CHEAT_CONFIG_PATH=~/.config/cheat/conf.yml; cheat"
+alias snote="sync_notebook"
 alias scheat="sync_cheat"
 alias sc='cheat -l | tail -n +2 | fzf | awk -v vars="$*" '"'"'{ split($2,a,"/");print "cheat " $1 " -p " a[5], vars }'"'"' | sh'
 alias ec='cheat -l | tail -n +2 | fzf | awk -v vars="$*" '"'"'{ split($2,a,"/");print "cheat -e " $1 " -p " a[5],  vars }'"'"' | sh'
