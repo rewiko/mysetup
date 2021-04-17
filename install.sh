@@ -49,6 +49,6 @@ cp .spacevim ~/.spacevim
 
 git config --global core.hooksPath ~/.githooks
 mkdir ~/.githooks
-cp commit-msg ~/.gitconfig/commit-msg
-chmod +x ~/.gitconfig/commit-msg
+cp commit-msg ~/.githooks/commit-msg
+chmod +x ~/.githooks/commit-msg
 
