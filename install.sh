@@ -47,3 +47,8 @@ bash <(curl -fsSL https://raw.githubusercontent.com/liuchengxu/space-vim/master/
 # vim config
 cp .spacevim ~/.spacevim
 
+git config --global core.hooksPath ~/.githooks
+mkdir ~/.githooks
+cp commit-msg ~/.gitconfig/commit-msg
+chmod +x ~/.gitconfig/commit-msg
+
