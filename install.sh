@@ -27,6 +27,7 @@ cp -r .tmuxinator ~/
 cp -r terminator ~/.config
 cp .zshrc ~/
 cp .zshenv ~/
+cp .p10k.zsh ~/
 
 mkdir -p ~/work
 
