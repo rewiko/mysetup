@@ -1,13 +1,16 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/go/bin:/usr/local/bin:$HOME/bin:$HOME/.local/bin:.:$PATH
+
 
 # Path to your oh-my-zsh installation.
-  export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="af-magic"
+# ZSH_THEME="af-magic"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 #ZSH_THEME="mh"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -52,9 +55,10 @@ ZSH_THEME="af-magic"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf)
+plugins=(git fzf zsh-completions)
 
 source $ZSH/oh-my-zsh.sh
+autoload -U compinit && compinit
 
 # User configuration
 
@@ -81,11 +85,11 @@ bindkey \^U backward-kill-line
 
 bindkey '^[[Z' reverse-menu-complete
 
-if [[ ! $TERM =~ screen   ]]; then
+#if [[ ! $TERM =~ screen   ]]; then
 #exec tmux
 #        #exec tmuxinator new work
-   exec tmux ls | grep : | grep session- | grep -v attached| cut -d: -f1 | xargs -I {} tmux kill-session -t {} ; tmuxinator start work -n session-$( date +"%m-%d-%Y--%H-%M-%S" )
-fi
+   #exec tmux ls | grep : | grep session- | grep -v attached| cut -d: -f1 | xargs -I {} tmux kill-session -t {} ; tmuxinator start work -n session-$( date +"%m-%d-%Y--%H-%M-%S" )
+#fi
 
 export EDITOR=vim
 #alias tmux='TERM=screen-256color tmux -2'
@@ -93,6 +97,8 @@ if [ "$TERM" = "xterm"  ]; then
     export TERM=xterm-256color
 fi
 alias tmux='tmux -2'  # for 256color
+alias st='exec tmux ls | grep : | grep session- | grep -v attached| cut -d: -f1 | xargs -I {} tmux kill-session -t {} ; tmuxinator start work -n session-$( date +"%m-%d-%Y--%H-%M-%S" )'
+
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -115,7 +121,7 @@ function sync_cheat() {
   pcheat
   cd ~/.cheat-data/personal/
   git add .
-  git commit -am 'update cheatsheet'
+  git commit -am 'feat(cheatsheet): update cheatsheet'
   git push origin master
   cd -
 }
@@ -124,9 +130,16 @@ function sync_notebook() {
   pcheat
   cd ~/.cheat-data/notebook/
   git add .
-  git commit -am 'update notebook'
+  git commit -am 'feat(notebook): update notebook'
   git push origin master
   cd -
+}
+
+function git() {
+    case $* in
+        commit* ) echo -n "[Warning] Please use 'git cz'\n" ; command git "$@";; # The command ensures that we do not use our function recursively
+        * ) command git "$@" ;;
+    esac
 }
 
 # export CHEAT_CONFIG_PATH="~/.config/cheat/conf.yml"
@@ -142,4 +155,8 @@ function assh() {
   shift;
   ssh $node $@
 }
+
+export GOPATH=~/go/
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
