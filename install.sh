@@ -11,7 +11,7 @@ mv cheat-conf.yaml ~/.config/cheat/conf.yml
 mv cheat-notebook.yaml ~/.config/cheat/notebook.yml
 rm -rf ~/.oh-my-zsh/
 
-git clone https://rewiko@bitbucket.org/rewiko/cheatsheet.git ~/.cheat-data/personal/
+git clone git@bitbucket.org:rewiko/cheatsheet.git ~/.cheat-data/personal/
 git clone https://github.com/cheat/cheatsheets.git  ~/.cheat-data/community/
 git clone git@github.com:rewiko/notebook.git ~/.cheat-data/notebook/
 
